@@ -3,3 +3,5 @@ __pycache__/
 .venv/
 .idea/
 .vscode/
+.pytest_cache/
+.streamlit/secrets.toml
