@@ -50,10 +50,9 @@ Output:
 Selected Distribution Routes:
 Item ID: 102, Forecasted Quantity: 35, Priority: 5
 Item ID: 101, Forecasted Quantity: 60, Priority: 4
-Item ID: 103, Forecasted Quantity: 25, Priority: 3
 ```
 
-All three orders fit: at the cheapest unit price (₹10.50) they cost ₹367.50 + ₹630.00 + ₹262.50 = ₹1260, which is under the ₹1500 budget.
+Order 102 (priority 5) is picked first: 35 units cost ₹367.50 at the cheapest unit price (₹10.50) and leave 65 in stock. Order 101 comes next: 60 units bring the cost to ₹997.50 and leave 5 in stock. Order 103 needs 25 units, which is more than the 5 left, so it is skipped.
 
 ## Algorithm: greedy route planning
 
@@ -62,7 +61,7 @@ All three orders fit: at the cheapest unit price (₹10.50) they cost ₹367.50 
 1. Sort orders by priority, highest first.
 2. Start with an empty list of distribution routes and zero cost.
 3. For each order, price its forecasted quantity at the cheapest supplier's unit price.
-4. Add the order if the running cost stays within the maximum budget and the current stock covers its forecasted quantity.
+4. Add the order if the running cost stays within the maximum budget and the remaining stock covers its forecasted quantity, then subtract that quantity from the stock.
 5. Return the selected routes.
 
 ### Time complexity
@@ -90,8 +89,5 @@ Greedy suits quick, approximate answers on small and medium inputs. Dynamic prog
 ```
 .
 ├── main.py             # the program
-├── sample_input.txt    # example input from the report
-└── docs/
-    ├── DAA_PROJECT(93,96,125).docx    # project report
-    └── DAA ppt project(93,96,125).pptx # presentation
+└── sample_input.txt    # example input from the report
 ```

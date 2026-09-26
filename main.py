@@ -21,6 +21,7 @@ class SupplyChainManagement:
             if current_cost + order['forecasted_quantity'] * min(supplier['price_per_unit_inr'] for supplier in self.suppliers) <= max_budget:
                 if current_stock >= order['forecasted_quantity']:
                     current_cost += order['forecasted_quantity'] * min(supplier['price_per_unit_inr'] for supplier in self.suppliers)
+                    current_stock -= order['forecasted_quantity']
                     distribution_routes.append(order)
 
         return distribution_routes
